@@ -5,3 +5,6 @@ This system proposes Raspberry Pi for model implementation, Cameras for capturin
 npm install 
 
 npm run dev
+
+
+browser -> http://localhost:8080/upload
