@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import multer from 'multer'
 
+
 const app = express()
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -18,14 +19,18 @@ const upload = multer({storage: storage})
 app.use(express.json())
 app.set("view engine", "ejs")
 
-
 //GET API
-app.get("/upload", (req, res) => {
-  res.render("upload")
+app.get("/post", (req, res) => {
+  res.render("post")
+}
+)
+app.get("/get/:id", (req, res) => {
+  //res.send(req.params.id)
+  res.download('./images/'+req.params.id)
 }
 )
 //POST API
-app.post("/upload", upload.single('image'), (req, res) => {
+app.post("/post", upload.single('image'), (req, res) => {
   res.send("uploaded")
 }
 )
